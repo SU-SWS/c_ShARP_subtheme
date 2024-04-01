@@ -1,5 +1,6 @@
 @charset 'UTF-8';
 
+// Unset gradient overlay for default banner
 .su-hero {
   .su-hero__media {
     .gradient-overlay {
@@ -10,150 +11,377 @@
 
 // Transparent overlay banner variant
 .csharp-wrapper--banner-transparent-overlay {
-  .su-hero {
-    .su-hero__media {
-      min-height: auto;
-      position: absolute;
-
-      img {
-        opacity: 0.4;
-      }
-
-      .gradient-overlay {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 75%;
-        background: linear-gradient(108deg, #121212 28.73%, rgba(46, 45, 41, 0.00) 55.15%);
-        z-index: 9;
-      }
-    }
-
-    &.overlay-right {
-      .gradient-overlay {
-        right: 0;
-        left: unset;
-        background: linear-gradient(252deg, #121212 28.73%, rgba(46, 45, 41, 0.00) 55.15%);
-      }
-    }
-
-    .su-hero__card {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      left: auto;
-      text-align: center;
-      max-width: unset;
-      margin: 0;
-      bottom: unset;
-
+  .overlay-left {
+    .su-card {
       @include grid-media-min('md') {
-        max-width: 650px;
-        text-align: unset;
+        // left: 80px;
+        left: 13px;
       }
-
-      .su-card__contents {
-        @include responsive-spacing('padding-top', 4);
-        @include responsive-spacing('padding-bottom', 5);
-
-        color: $su-color-black-10;
-        max-width: 100ch;
-        margin: 0 auto;
-        min-height: 220px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        :first-child {
-          margin-top: 0;
-        }
-
-        span {
-          @include type-d;
-        }
-
-        h2 {
-          @include type-a;
-
-          font-family: $su-font-slab;
-          font-weight: 500;
-
-          @include grid-media-min('md') {
-            font-size: 9.6rem;
-            letter-spacing: 0.48px;
-          }
-        }
-
-        p {
-          @include type-c;
-
-          font-family: $csharp-font--roboto;
-          margin-right: 0;
-          margin-left: 0;
-
-          @include grid-media-min('md') {
-            font-size: 4.4rem;
-            line-height: 120%;
-            letter-spacing: 0.22px;
-          }
-        }
-
-        .su-card__button {
-          a {
-            border-radius: 7px;
-            
-            &:hover,
-            &:focus,
-            &:active {
-              background-color: $su-color-white;
-              color: $su-color-black;
-            }
-
-            @include grid-media-min('xl') {
-              padding: 1.5rem 3rem 1.8rem;
-              font-size: 2.8rem;
-            }
   
-            @include grid-media-min('2xl') {
-              font-size: 3rem;
-            }
-          }
-        }
+      @include grid-media-min('lg') {
+        // left: 170px;
+        left: 40px;
+      }
+  
+      @include grid-media-min('xl') {
+        left: 60px;
       }
     }
   }
 
-  &.overlay-left {
+  .overlay-right {
     .su-card {
       @include grid-media-min('md') {
-        left: 80px;
+        // right: 80px;
+        right: 13px;
+        // margin-left: auto;
+
+        .su-card__contents {
+          align-items: flex-end;
+
+          p {
+            text-align: end;
+          }
+        }
       }
 
       @include grid-media-min('lg') {
-        left: 170px;
+        // right: 170px;
+        right: 40px;
+      }
+
+      @include grid-media-min('xl') {
+        right: 60px;
       }
     }
 
-    &.overlay-right {
-      .su-card {
-        @include grid-media-min('md') {
-          right: 80px;
-          margin-left: auto;
+    .su-card__contents {
+      text-align: end;
+    }
+  }
+
+  .su-hero__card {
+    background: $su-color-black;
+    border: none;
+  }
+
+  .su-card__contents {
+    color: $su-color-black-10;
+
+    h2,
+    h3,
+    h4
+    .su-font-splash {
+      font-size: 3.9rem;
+      font-weight: 500;
+      font-family: $su-font-slab;
+      letter-spacing: 0.195px;
+
+      @include grid-media-min('md') {
+        font-size: 4.4rem;
+        letter-spacing: 0.22px;
+        // font-size: 9.6rem;
+        // letter-spacing: 0.48px;
+      }
+
+      @include grid-media-min('lg') {
+        font-size: 8.7rem;
+        letter-spacing: 0.435px;
+      }
+
+      @include grid-media-min('xl') {
+        font-size: 9.6rem;
+        letter-spacing: 0.48px;
+      }
+    }
+
+    p {
+      font-family: $csharp-font--roboto;
+      font-size: 2.65rem;
+      margin-right: 0;
+      margin-left: 0;
+      line-height: 1.2;
+
+      @include grid-media-min('md') {
+        font-size: 2.8rem;
+      }
+
+      @include grid-media-min('lg') {
+        font-size: 3.5rem;
+      }
+
+      @include grid-media-min('xl') {
+        font-size: 4.4rem;
+      }
+    }
+  }
+
+  // .su-link {
+  a {
+    color: $su-color-white;
+    text-decoration: none;
+    // text-shadow: unset;
+
+    &::after {
+      background-color: $su-color-white;
+      height: 15px;
+      width: 15px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $su-color-white;
+      text-decoration: underline;
+
+      &::after {
+        background-color: $su-color-white;
+      }
+    }
+
+    // .su-button {
+    //   &::after {
+    //     height: unset;
+    //     width: unset;
+    //   }
+    // }
   
-          .su-card__contents {
-            align-items: flex-end;
+    &.su-button--secondary {
+      text-shadow: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $su-color-black;
+      }
   
-            p {
-              text-align: end;
-            }
-          }
+      // &::after {
+      //   height: unset;
+      //   width: unset;
+      // }
+    }
+  
+    &.su-button,
+    &.su-button--big {
+      border-radius: 7px;
+      text-shadow: none;
+      
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $su-color-white;
+        color: $su-color-black;
+  
+        &::after {
+          background-color: $su-color-black;
         }
+      
+        // &::after {
+        //   height: unset;
+        //   width: unset;
+        // }
+      }
+  
+  
+      @include grid-media-min('xl') {
+        padding: 1.5rem 3rem 1.8rem;
+        font-size: 2.8rem;
+      }
+  
+      @include grid-media-min('2xl') {
+        font-size: 3rem;
+      }
+    }
+  }
+
+
+  @include grid-media-min('md') {
+    .su-hero {
+      .su-hero__media {
+        min-height: auto;
+        position: absolute;
+  
+        img {
+          // opacity: 0.4;
+        }
+  
+        .gradient-overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          // width: 75%;
+          background: linear-gradient(108deg, #121212 28.73%, rgba(46, 45, 41, 0.00) 55.15%);
+          z-index: 9;
+
+          @include grid-media-min('xl') {
+            width: 95%;
+          }
+
+          // @include grid-media-min('2xl') {
+          //   width: 85%;
+          // }
+        }
+      }
+  
+      &.overlay-right {
+        .gradient-overlay {
+          right: 0;
+          left: unset;
+          background: linear-gradient(252deg, #121212 28.73%, rgba(46, 45, 41, 0.00) 55.15%);
+        }
+      }
+  
+      .su-hero__card {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        // left: auto;
+        text-align: center;
+        // max-width: unset;
+        // max-width: 600px;
+        // max-width: 400px;
+        max-width: 375px;
+        // margin: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        bottom: unset;
+        text-align: unset;
 
         @include grid-media-min('lg') {
-          right: 170px;
+          max-width: 525px;
+        }
+
+        @include grid-media-min('xl') {
+          max-width: 600px;
+        }
+  
+        // @include grid-media-min('md') {
+        //   max-width: 650px;
+        //   text-align: unset;
+        // }
+  
+        .su-card__contents {
+          @include responsive-spacing('padding-top', 4);
+          @include responsive-spacing('padding-bottom', 5);
+  
+          color: $su-color-black-10;
+          // text-shadow: 1px 1px 2px $su-color-black;
+          text-shadow: 0px 4px 10px $su-color-black-true;
+          max-width: 100ch;
+          margin: 0 auto;
+          min-height: 220px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+  
+          :first-child {
+            margin-top: 0;
+          }
+  
+          span {
+            @include type-d;
+            // text-shadow: 1px 1px 2px $su-color-black;
+          }
+  
+          h2,
+          h3,
+          h4
+          .su-font-splash {
+            // @include type-a;
+  
+            // font-family: $su-font-slab;
+            // font-weight: 500;
+  
+            // @include grid-media-min('md') {
+            //   font-size: 9.6rem;
+            //   letter-spacing: 0.48px;
+            // }
+          }
+  
+          // p {
+          //   // @include type-c;
+  
+          //   font-family: $csharp-font--roboto;
+          //   margin-right: 0;
+          //   margin-left: 0;
+  
+          //   @include grid-media-min('md') {
+          //     font-size: 4.4rem;
+          //     line-height: 120%;
+          //     letter-spacing: 0.22px;
+          //   }
+          // }
+  
+          // .su-card__button {
+          //   a {
+          //     border-radius: 7px;
+              
+          //     &:hover,
+          //     &:focus,
+          //     &:active {
+          //       background-color: $su-color-white;
+          //       color: $su-color-black;
+          //     }
+  
+          //     @include grid-media-min('xl') {
+          //       padding: 1.5rem 3rem 1.8rem;
+          //       font-size: 2.8rem;
+          //     }
+    
+          //     @include grid-media-min('2xl') {
+          //       font-size: 3rem;
+          //     }
+          //   }
+          // }
         }
       }
     }
+  
+    // &.overlay-left {
+    //   .su-card {
+    //     @include grid-media-min('md') {
+    //       // left: 80px;
+    //       left: 13px;
+    //     }
+  
+    //     @include grid-media-min('lg') {
+    //       // left: 170px;
+    //       left: 40px;
+    //     }
+
+    //     @include grid-media-min('xl') {
+    //       left: 60px;
+    //     }
+    //   }
+  
+    //   &.overlay-right {
+    //     .su-card {
+    //       @include grid-media-min('md') {
+    //         // right: 80px;
+    //         right: 13px;
+    //         margin-left: auto;
+    
+    //         .su-card__contents {
+    //           align-items: flex-end;
+    
+    //           p {
+    //             text-align: end;
+    //           }
+    //         }
+    //       }
+  
+    //       @include grid-media-min('lg') {
+    //         // right: 170px;
+    //         right: 40px;
+    //       }
+
+    //       @include grid-media-min('xl') {
+    //         right: 60px;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }

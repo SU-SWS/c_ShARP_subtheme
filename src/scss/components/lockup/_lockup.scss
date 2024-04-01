@@ -9,11 +9,11 @@
     // margin-bottom: 2.5rem;
 
     .su-lockup__cell1 {
-      @include grid-media-min('md') {
-        border-right: 1px solid #2e2d29;
-        padding-right: 2rem;
-        max-width: max-content;
-      }
+      // @include grid-media-min('md') {
+      border-right: 1px solid #2e2d29;
+      padding-right: 2rem;
+      max-width: max-content;
+      // }
     }
 
     .su-lockup__wordmark-wrapper {
