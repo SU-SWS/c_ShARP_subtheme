@@ -22,36 +22,3 @@
     }
   }
 }
-
-// @include grid-media-min('lg') {
-//   .su-masthead {
-//     >section:last-of-type {
-//       // Grid setup.
-//       display: grid;
-//       grid-template-columns: 281px 1fr;
-//       grid-template-areas: "lockup main-nav"
-//       "search-field search-field";
-//       align-items: end;
-//       padding-bottom: 0;
-//       // max-width: $chemh-site-max-width;
-//       margin: 0 auto;
-//       width: calc(100% - 50px);
-  
-//       .su-lockup {
-//         grid-area: lockup;
-//         margin-bottom: 3.4rem;
-//       }
-  
-//       .su-multi-menu {
-//         grid-area: main-nav;
-//       }
-  
-//       @media (max-width: 1400px) {
-//         display: grid;
-//         grid-template-columns: 1fr;
-//         grid-template-areas: "lockup lockup lockup"
-//         "main-nav search-field search-field";
-//       }
-//     }
-//   }
-// }

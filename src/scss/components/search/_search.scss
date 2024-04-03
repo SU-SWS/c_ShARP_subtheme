@@ -8,16 +8,11 @@
   .menu-search-wrapper {
     border-left: 1px solid #000;
     display: flex;
-    // margin-top: 5rem;
-    // margin-bottom: 5rem;
-    // margin-left: 5rem;
     margin: 5rem 0;
   }
 
   .menu-search-link {
-    // margin: auto 10rem auto auto;
     margin: auto 6rem auto auto;
-    // right: -80px;
     right: -60px;
     position: relative;
 
@@ -32,27 +27,6 @@
       }
     }
   }
-
-//   .su-multi-menu {
-//     display: flex;
-  
-//     .menu-search-link {
-//       margin-left: 3.6rem;
-//       align-self: center;
-//       border-left: 1px solid $su-color-black;
-//       padding-left: 3.6rem;
-
-//       i {
-//         color: $su-color-black;
-
-//         &:hover,
-//         &:focus,
-//         &:active {
-//           color: $csharp-color-green;
-//         }
-//       }
-//     }
-//   }
 }
 
 @include grid-media-max('md') {
