@@ -238,6 +238,10 @@ const Button = styled.button`
     // align-self: center;
     width: auto;
     margin-left: 1rem;
+    // position: ${({level}) => level != 0 ? "absolute" : "unset"};
+    // position: ${props => props.level != 0 ? "absolute" : "relative"};
+    // right: ${props => props.level != 0 ? "2rem" : "unset"};
+    // right: ${({level}) => level != 0 ? "2rem" : "unset"};
 
     &:hover, &:focus {
       border-bottom: 2px solid #2e2d29;
@@ -284,19 +288,33 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
   @media (min-width: 992px) {
     // color: #b1040e;
     color: #2e2d29;
-    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "1.6rem 0"};
+    // padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "1.6rem 0"};
+    // padding: ${({level}) => level != 0 ? "16px" : "1.6rem 0"};
+    // padding: ${({level}) => level != 0 ? "3.6rem 3rem 3.6rem 3.6rem" : "1.6rem 0"};
+    padding: ${({level}) => level != 0 ? "3.6rem 6.2rem 3.6rem 3.6rem" : "1.6rem 0"};
+    padding-left: ${({level}) => level === 2 ? "5.6rem" : ""};
+    padding-left: ${({level}) => level === 3 ? "7.6rem" : ""};
     // padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "0 0 2rem 0"};
     // margin-top: ${({level}) => level != 0 ? "16px 0 16px 16px" : "1.5rem"};
     border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #007C7E" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
+    // border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
+    // border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "none") : "none"};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
     // margin-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "-6px" : (inTrail ? "-6px" : "-6px")) : ""};
     // margin-bottom: 0;
     // padding-top: 0;
     // padding-bottom: 5.2rem;
+    background-color: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "#f4f4f4" : "none") : "none"};
 
     &:hover, &:focus {
       color: #2e2d29;
-      border-left: ${({level}) => level != 0 ? "6px solid #2e2d29" : "none"};
+      // border-left: ${({level}) => level != 0 ? "6px solid #2e2d29" : "none"};
+      // border-left: ${({level}) => level != 0 ? "6px solid #2e2d29" : "6px solid transparent"};
+      // border-left: none;
+      // border-left: ${({level}) => level != 0 ? "6px solid transparent" : "none"};
+      border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
+      // background-color: #f4f4f4;
+      background-color: ${({level}) => level != 0 ? "#f4f4f4" : "unset"};
     }
   }
 
@@ -312,7 +330,12 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
 
   @media (min-width: 1396px) {
     // padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "0 0 5.2rem 0"};
-    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "0 0 4.7rem 0"};
+    // padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "0 0 4.7rem 0"};
+    // padding: ${({level}) => level != 0 ? "16px" : "0 0 4.7rem 0"};
+    // padding: ${({level}) => level != 0 ? "3.6rem 3rem 3.6rem 3.6rem" : "0 0 4.7rem 0"};
+    padding: ${({level}) => level != 0 ? "3.6rem 6.2rem 3.6rem 3.6rem" : "0 0 4.7rem 0"};
+    padding-left: ${({level}) => level === 2 ? "5.6rem" : ""};
+    padding-left: ${({level}) => level === 3 ? "7.6rem" : ""};
     margin-top: ${({level}) => level != 0 ? "16px 0 16px 16px" : "1.5rem"};
   }
 `
@@ -347,7 +370,8 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
     top: 100%;
     background: #ffffff;
     border-top: 1px solid #d9d9d9;
-    right: 0;
+    min-width: 370px;
+    // right: 0;
   }
 `
 
@@ -363,7 +387,8 @@ const ListItem = styled.li<{ level?: number }>`
 
   @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
-    padding: ${props => props.level > 0 ? "0 10px" : "0"};
+    // padding: ${props => props.level > 0 ? "0 10px" : "0"};
+    padding: 0;
   }
 `
 
@@ -441,6 +466,12 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
               onClick={() => setSubmenuOpen(!submenuOpen)}
               aria-expanded={submenuOpen}
               aria-label={(submenuOpen ? "Close" : "Open") + ` ${title} Submenu`}
+              style={{
+                position: level != 0 ? "absolute" : "unset",
+                // right: level != 0 ? "2rem" : "unset",
+                right: level != 0 ? "4.2rem" : "unset",
+                top: level != 0 ? "2.2rem" : "unset",
+              }}
             >
               <Caret style={{
                 transform: submenuOpen ? "rotate(180deg)" : "",
