@@ -9,7 +9,6 @@ import OutsideClickHandler from "./components/outside-click-handler";
 import Caret from "./components/caret";
 import Hamburger from "./components/hamburger";
 import Close from "./components/close";
-import MagnifyingGlass from "./components/magnifying-glass";
 
 const islandName = 'main-menu-island'
 
@@ -36,17 +35,20 @@ const TopList = styled.ul`
   justify-content: flex-start;
   list-style: none;
   margin: 0;
-  background: #2e2d29;
-  padding: 24px;
+  background: #fff;
+  padding: 0;
   font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2);
+  border-top: 1px solid #D5D5D4;
 
   @media (min-width: 992px) {
     display: flex;
     background: transparent;
-    padding: 0;
     font-size: 19px;
     height: 100%;
     width: 100%;
+    box-shadow: none;
+    border-top: none;
 `
 
 const MobileMenuButton = styled.button`
@@ -67,58 +69,6 @@ const MobileMenuButton = styled.button`
     background: transparent;
     color: #2e2d29;
     box-shadow: none;
-  }
-
-  @media (min-width: 992px) {
-    display: none;
-  }
-`
-
-const SearchContainer = styled.div`
-  padding: 10px 30px 0;
-  margin: 0;
-  background: #2e2d29;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  label {
-    padding: 0 10px;
-    margin: 0;
-    color: #ffffff;
-  }
-
-  input {
-    margin: 0;
-    width: 100%;
-    border-radius: 999px;
-    height: 40px;
-    padding: 0 20px;
-    max-width: 100%;
-  }
-
-  button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    color: #b1040e;
-    border: 2px solid transparent;
-    border-radius: 999px;
-    aspect-ratio: 1;
-    padding: 0;
-    margin: 0;
-
-    &:hover, &:focus {
-      border: 1px solid #2e2d29;
-    }
   }
 
   @media (min-width: 992px) {
@@ -170,24 +120,6 @@ export const MainMenu = ({}) => {
       </MobileMenuButton>
 
       <MenuWrapper open={menuOpen}>
-        <SearchContainer>
-          <form action="/search" method="get">
-            <label htmlFor="mobile-search-input">Keyword Search</label>
-            <div style={{position: "relative"}}>
-              <input
-                id="mobile-search-input"
-                type="text"
-                placeholder="Search this site"
-                name="key"
-              />
-              <button type="submit">
-                <MagnifyingGlass style={{width: "25px", height: "25px"}}/>
-                <span className="visually-hidden">Submit Search</span>
-              </button>
-            </div>
-          </form>
-
-        </SearchContainer>
         <TopList>
           {menuTree.items.map(item => <MenuItem key={item.id} {...item}/>)}
         </TopList>
@@ -197,8 +129,8 @@ export const MainMenu = ({}) => {
 }
 
 const Button = styled.button`
-  color: #ffffff;
-  background: #b1040e;
+  color: #2e2d29;
+  background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
   padding: 0;
@@ -209,26 +141,22 @@ const Button = styled.button`
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border 0.2s ease-in-out;
   width: 38px;
   height: 38px;
+  position: absolute;
+  right: 4.2rem;
+  top: 0.8rem;
+  width: auto;
+  border-radius: 0;
 
   &:hover, &:focus {
     box-shadow: none;
-    border-bottom: 2px solid #b1040e;
-    background: #f4f4f4;
-    color: #000000;
+    text-decoration: underline;
+    border-bottom: 2px solid #2e2d29;
+    color: #2e2d29;
+    background: transparent;
   }
 
   @media (min-width: 992px) {
-    color: #2e2d29;
-    background: transparent;
-    border-radius: 0;
-    width: auto;
     margin-left: 1rem;
-
-    &:hover, &:focus {
-      border-bottom: 2px solid #2e2d29;
-      color: #2e2d29;
-      background: transparent;
-    }
   }
 `
 
@@ -250,26 +178,33 @@ const MenuItemContainer = styled.div<{ level?: number }>`
 `
 
 const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: number }>`
-  color: #ffffff;
-  font-weight: 500;
+  color: #2e2d29;
+  font-weight: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "500" : "400") : "500"};
   font-family: Roboto Slab;
   text-decoration: none;
-  padding: 16px 0 16px 16px;
+  padding: 2rem 6.2rem 2.6rem 3.6rem;
+  padding-left: ${({level}) => level === 1 ? "5.6rem" : ""};
+  padding-left: ${({level}) => level === 2 ? "7.6rem" : ""};
+  padding-left: ${({level}) => level === 3 ? "9.6rem" : ""};
+  padding-left: ${({level}) => level === 4 ? "11.6rem" : ""};
+  padding-left: ${({level}) => level === 5 ? "13.6rem" : ""};
   transition: all 0.2s ease-in-out;
-  border-left: ${({isCurrent}) => isCurrent ? "6px solid #b1040e" : "6px solid transparent"};
+  border-left: ${({isCurrent}) => isCurrent ? "6px solid #007C7E" : "6px solid transparent"};
   width: 100%;
+  background-color: ${({isCurrent}) => isCurrent ? "#f4f4f4" : "none"};
 
   &:hover, &:focus {
     text-decoration: underline;
-    color: #ffffff;
-    border-left: 6px solid #ffffff;
+    background-color: #f4f4f4;
   }
 
   @media (min-width: 992px) {
-    color: #2e2d29;
-    padding: ${({level}) => level != 0 ? "3.6rem 6.2rem 3.6rem 3.6rem" : "1.6rem 0"};
+    padding: ${({level}) => level != 0 ? "2rem 6.2rem 2.6rem 3.6rem" : "1.6rem 0"};
     padding-left: ${({level}) => level === 2 ? "5.6rem" : ""};
     padding-left: ${({level}) => level === 3 ? "7.6rem" : ""};
+    padding-left: ${({level}) => level === 4 ? "9.6rem" : ""};
+    padding-left: ${({level}) => level === 5 ? "11.6rem" : ""};
+    font-weight: ${({level, isCurrent}) => level != 0 || 1 ? (isCurrent ? "500" : "400") : "500"};
     border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #007C7E" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
     background-color: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "#f4f4f4" : "none") : "none"};
@@ -279,27 +214,34 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
       border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
       background-color: ${({level}) => level != 0 ? "#f4f4f4" : "unset"};
     }
+
+    + button {
+      position: ${({level}) => level === 0 ? "relative" : ""};
+      top: ${({level}) => level === 0 ? "0" : ""};
+      right: ${({level}) => level === 0 ? "0" : ""};
+    }
   }
 
   @media (min-width: 1396px) {
-    padding: ${({level}) => level != 0 ? "3.6rem 6.2rem 3.6rem 3.6rem" : "0 0 4.7rem 0"};
+    padding: ${({level}) => level != 0 ? "2rem 6.2rem 2.6rem 3.6rem" : "0 0 4.7rem 0"};
     padding-left: ${({level}) => level === 2 ? "5.6rem" : ""};
     padding-left: ${({level}) => level === 3 ? "7.6rem" : ""};
+    padding-left: ${({level}) => level === 4 ? "9.6rem" : ""};
+    padding-left: ${({level}) => level === 5 ? "11.6rem" : ""};
     margin-top: ${({level}) => level != 0 ? "16px 0 16px 16px" : "1.5rem"};
   }
 `
 
 const NoLink = styled.span<{ level?: number }>`
-  color: #ffffff;
+  color: #2e2d29;
+  font-family: Roboto Slab;
   font-weight: 600;
   text-decoration: none;
-  padding: 16px 0 16px 16px;
+  padding: 2rem 0 2.6rem 4.2rem;
 
   @media (min-width: 992px) {
-    color: #2e2d29;
     font-weight: 500;
-    font-family: Roboto Slab;
-    padding: ${({level}) => level != 0 ? "16px 0 16px 16px" : "16px 0"};
+    padding: 1.6rem 0;
   }
 `
 
@@ -309,24 +251,23 @@ const MenuList = styled.ul<{ open?: boolean, level?: number }>`
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid #53565a;
-  min-width: 300px;
+  border-top: 1px solid #D5D5D4;
 
   @media (min-width: 992px) {
     box-shadow: ${props => props.level === 0 ? "0 10px 20px rgba(0,0,0,.15),0 6px 6px rgba(0,0,0,.2)" : ""};
     position: ${props => props.level === 0 ? "absolute" : "relative"};
     top: 100%;
     background: #ffffff;
-    border-top: 1px solid #d9d9d9;
-    min-width: 370px;
+    right: ${props => props.level === 0 ? "3.2rem" : "0"};
+    min-width: 40rem;
   }
 `
 
 const ListItem = styled.li<{ level?: number }>`
   position: relative;
-  border-bottom: 1px solid #53565a;
-  padding: ${props => props.level > 0 ? "0 0 0 10px" : "0"};
+  border-bottom: 1px solid #D5D5D4;
   margin: 0;
+  padding: 0;
 
   &:last-child {
     border-bottom: none;
@@ -334,7 +275,6 @@ const ListItem = styled.li<{ level?: number }>`
 
   @media (min-width: 992px) {
     border-bottom: ${props => props.level === 0 ? "none" : "1px solid #d9d9d9"};
-    padding: 0;
   }
 `
 
@@ -396,11 +336,6 @@ const MenuItem = ({title, url, items, expanded, level = 0}: { title: string, url
               onClick={() => setSubmenuOpen(!submenuOpen)}
               aria-expanded={submenuOpen}
               aria-label={(submenuOpen ? "Close" : "Open") + ` ${title} Submenu`}
-              style={{
-                position: level != 0 ? "absolute" : "unset",
-                right: level != 0 ? "4.2rem" : "unset",
-                top: level != 0 ? "2.2rem" : "unset",
-              }}
             >
               <Caret style={{
                 transform: submenuOpen ? "rotate(180deg)" : "",
