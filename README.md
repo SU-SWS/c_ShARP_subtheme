@@ -6,7 +6,15 @@ Changelog: [Changelog.txt](CHANGELOG.txt)
 Description
 ---
 
-The c-ShARP Subtheme is a Stanford sub-theme that works with the Stanford Basic theme and was built by modifying the [Stanford Starter](https://github.com/SU-SWS/c_sharp_subtheme) Subtheme.
+The c-ShARP Subtheme is a Stanford sub-theme that works with the Stanford Basic theme and was built by modifying the [Stanford Starter](https://github.com/SU-SWS/c_sharp_subtheme) Subtheme. This theme includes the following features:
+- Masthead updates
+  - Updated lockup for option O
+  - Updated decoupled menu
+  - Search Removed
+- Green button and link styles
+- Roboto font addition
+- Transparent overlay banner variant
+- Updated local footer
 
 Documentation
 ---
