@@ -28,7 +28,6 @@
   @media (min-width: 992px) {
     display: flex;
     background: transparent;
-    font-size: 19px;
     height: 100%;
     width: 100%;
     box-shadow: none;
@@ -128,10 +127,11 @@
     padding-left: ${({level:e})=>3===e?"7.6rem":""};
     padding-left: ${({level:e})=>4===e?"9.6rem":""};
     padding-left: ${({level:e})=>5===e?"11.6rem":""};
-    font-weight: ${({level:e,isCurrent:t})=>t?"500":"400"};
+    font-size: ${({level:e})=>0===e?"19px":"18px"};
+    font-weight: ${({level:e})=>1===e?"500":""};
     border-bottom: ${({level:e,inTrail:t,isCurrent:n})=>0===e?n?"6px solid #007C7E":t?"6px solid #b6b1a9":"6px solid transparent":""};
     border-left: ${({level:e,isCurrent:t})=>0!=e?t?"6px solid #007C7E":"6px solid transparent":"none"};
-    background-color: ${({level:e,isCurrent:t})=>0!=e&&t?"#f4f4f4":"none"};
+    background-color: ${({level:e,isCurrent:t})=>0!=e&&t?"#f4f4f4":"unset"};
 
     &:hover, &:focus {
       color: #2e2d29;

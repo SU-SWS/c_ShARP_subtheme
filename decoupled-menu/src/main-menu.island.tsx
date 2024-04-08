@@ -44,7 +44,6 @@ const TopList = styled.ul`
   @media (min-width: 992px) {
     display: flex;
     background: transparent;
-    font-size: 19px;
     height: 100%;
     width: 100%;
     box-shadow: none;
@@ -204,10 +203,11 @@ const MenuLink = styled.a<{ isCurrent?: boolean, inTrail?: boolean, level?: numb
     padding-left: ${({level}) => level === 3 ? "7.6rem" : ""};
     padding-left: ${({level}) => level === 4 ? "9.6rem" : ""};
     padding-left: ${({level}) => level === 5 ? "11.6rem" : ""};
-    font-weight: ${({level, isCurrent}) => level != 0 || 1 ? (isCurrent ? "500" : "400") : "500"};
+    font-size: ${({level}) => level === 0 ? "19px" : "18px"};
+    font-weight: ${({level}) => level === 1 ? "500" : ""};
     border-bottom: ${({level, inTrail, isCurrent}) => level === 0 ? (isCurrent ? "6px solid #007C7E" : (inTrail ? "6px solid #b6b1a9" : "6px solid transparent")) : ""};
     border-left: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "6px solid #007C7E" : "6px solid transparent") : "none"};
-    background-color: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "#f4f4f4" : "none") : "none"};
+    background-color: ${({level, isCurrent}) => level != 0 ? (isCurrent ? "#f4f4f4" : "unset") : "unset"};
 
     &:hover, &:focus {
       color: #2e2d29;
