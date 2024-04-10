@@ -90,8 +90,3 @@ allpages:
   css:
     theme:
       dist/css/main.css: { }
-  js:
-    src/js/c_sharp_subtheme.behaviors.js: { }
-  dependencies:
-    - core/jquery
-    - core/once
