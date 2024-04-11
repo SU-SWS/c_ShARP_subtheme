@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-// .su-multi-menu {
-//   display: none;
-// }
-
 @include grid-media-min('lg') {
   .system-menu-block {
     width: unset;
