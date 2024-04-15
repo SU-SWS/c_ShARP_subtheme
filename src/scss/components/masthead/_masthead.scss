@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.su-masthead {
+  >section {
+    &:last-of-type {
+      padding-top: 0;
+
+      @include grid-media-min('lg') {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+    }
+  }
+  
+  @include grid-media-min('lg') {
+    .system-menu-block {
+      padding-left: 4rem;
+      align-self: flex-end;
+      width: 90%;
+      bottom: unset;
+      position: relative;
+    }
+  }
+}

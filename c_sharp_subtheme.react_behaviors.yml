@@ -1,0 +1,15 @@
+# Example react_behaviors plugin definitions.
+# Plugin property $defaults are defined in ReactBehaviorsPluginManager.
+banner_variant_info:  # part of the key after the :
+  id: banner_type
+  label: 'Banner Paragraphs Type'
+  bundles:
+    - paragraphs_type|stanford_banner
+  config:
+    banner_style:
+      type: select
+      title: 'Banner style'
+      description: Select the styles for displaying this banner.
+      empty_option: Default
+      options:
+        csharp-wrapper--banner-transparent-overlay: Transparent overlay

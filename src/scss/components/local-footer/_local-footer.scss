@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 .su-local-footer  {
+  background-color: $su-color-white;
+  border-top: 1px solid $su-color-black;
+
   .su-lockup__cell2,
   h2,
   h3,

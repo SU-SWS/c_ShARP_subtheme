@@ -1,9 +1,32 @@
 @charset "UTF-8";
 
+.filter-menu {
+  .topics__collapsable-menu {
+    color: $csharp-color-green;
+
+    .su-link--jump {
+      &::after {
+        background-color: $csharp-color-green;
+      }
+    }
+  }
+
+  .menu {
+    .menu-item--active-trail {
+      &::before {
+        color: $csharp-color-green;
+      }
+  
+      .is-active {
+        color: $csharp-color-green;
+      }
+    }
+  }
+}
+
 .su-link,
 .su-link--action,
 .su-link--internal,
-.filter-menu .topics__collapsable-menu,
 a {
   color: $csharp-color-green;
 
