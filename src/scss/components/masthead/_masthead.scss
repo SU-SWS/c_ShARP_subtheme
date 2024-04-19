@@ -1,24 +1,86 @@
 @charset "UTF-8";
 
 .su-masthead {
+  .su-lockup {
+    flex: unset;
+    margin-bottom: 1.8rem;
+    margin-top: 1.8rem;
+
+    &.su-lockup--option-o {
+      .su-lockup__cell1 {
+        border-right: 1px solid #2e2d29;
+        padding-right: 2rem;
+        max-width: max-content;
+      }
+  
+      .su-lockup__wordmark-wrapper {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+  
+      .su-lockup__wordmark {
+        @include grid-media-min('md') {
+          font-size: 3.8rem;
+        }
+  
+        @include grid-media-min('lg') {
+          font-size: 4.1rem;
+        }
+      }
+  
+      .su-lockup__line4{
+        font-family: $su-font-slab;
+        font-weight: 400;
+        font-size: 2.2rem;
+        margin-top: 1.5rem;
+        text-transform: unset;
+        text-align: end;
+  
+        @include grid-media-min('md') {
+          font-size: 2.3rem;
+        }
+  
+        @include grid-media-min('lg') {
+          font-size: 2.7rem;
+        }
+      }
+    }
+  }
+
+  .su-site-search {
+    @include grid-media-min('sm') {
+      display: block;
+      padding-left: 4rem;
+      min-width: 30rem;
+      margin: unset;
+      width: unset;
+    }
+
+    @include grid-media-min('md') {
+      min-width: 40rem;
+    }
+
+    > form {
+      width: 100%;
+    }
+  }
+
+  .su-site-search__submit {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='23' viewBox='0 0 22 23' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.7632 9.26315C19.7632 12.6604 17.0091 15.4145 13.6118 15.4145C10.2146 15.4145 7.46053 12.6604 7.46053 9.26315C7.46053 5.86588 10.2146 3.11184 13.6118 3.11184C17.0091 3.11184 19.7632 5.86588 19.7632 9.26315ZM22 9.26315C22 13.8958 18.2445 17.6513 13.6118 17.6513C11.8203 17.6513 10.1599 17.0897 8.79722 16.1328L2.62703 21.8284C2.17315 22.2474 1.46557 22.2191 1.04661 21.7652C0.627642 21.3113 0.655945 20.6037 1.10982 20.1848L7.14872 14.6104C5.94635 13.1587 5.22369 11.2953 5.22369 9.26315C5.22369 4.63051 8.97919 0.875 13.6118 0.875C18.2445 0.875 22 4.63051 22 9.26315Z' fill='%23007C7E'/%3E%3C/svg%3E") no-repeat 0 0;
+  }
+
   >section {
     &:last-of-type {
       padding-top: 0;
 
-      @include grid-media-min('lg') {
-        flex-wrap: nowrap;
+      @include grid-media-min('sm') {
         justify-content: flex-start;
+        align-items: center;
       }
-    }
-  }
-  
-  @include grid-media-min('lg') {
-    .system-menu-block {
-      padding-left: 4rem;
-      align-self: flex-end;
-      width: 90%;
-      bottom: unset;
-      position: relative;
+
+      @include grid-media-min('xl') {
+        justify-content: space-between;
+      }
     }
   }
 }

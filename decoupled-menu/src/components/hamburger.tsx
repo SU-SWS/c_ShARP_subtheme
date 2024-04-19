@@ -1,10 +1,10 @@
 const Hamburger = ({...props}) => {
   return (
-    <svg width="30px" height="26px" viewBox="0 0 24 24" fill="none" aria-hidden={true} {...props}>
-      <path d="M4 18L20 18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-      <path d="M4 12L20 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-      <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none" aria-hidden={true} {...props}>
+      <path d="M10.4998 13.8346H31.1665C32.1782 13.8346 32.9998 13.013 32.9998 12.0013C32.9998 10.9896 32.1798 10.168 31.1665 10.168H10.4998C9.48817 10.168 8.6665 10.9896 8.6665 12.0013C8.6665 13.013 9.4865 13.8346 10.4998 13.8346Z" fill="black"/>
+      <path d="M31.1665 17.7513H10.4998C9.48817 17.7513 8.6665 18.573 8.6665 19.5846C8.6665 20.5963 9.48817 21.418 10.4998 21.418H31.1665C32.1782 21.418 32.9998 20.598 32.9998 19.5846C32.9998 18.5713 32.1798 17.7513 31.1665 17.7513Z" fill="black"/>
+      <path d="M31.1665 25.3346H10.4998C9.48817 25.3346 8.6665 26.1546 8.6665 27.168C8.6665 28.1813 9.48817 29.0013 10.4998 29.0013H31.1665C32.1782 29.0013 32.9998 28.1813 32.9998 27.168C32.9998 26.1546 32.1798 25.3346 31.1665 25.3346Z" fill="black"/>
+  </svg>
   )
 }
 export default Hamburger;
