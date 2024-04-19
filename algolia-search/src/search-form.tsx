@@ -20,6 +20,7 @@ const SearchForm = (props) => {
     ref.current = true;
     chosenNewsTypes.map(newsType => refineNewsType(newsType));
   }, [ref, chosenNewsTypes])
+  console.log('works');
 
   return (
     <form
