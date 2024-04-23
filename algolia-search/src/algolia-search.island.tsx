@@ -36,7 +36,7 @@ const Container = styled.div`
 const CustomHits = (props) => {
   const {hits} = useHits(props);
   if (hits.length === 0) return (
-    <p>No results for your search. Please try another search.</p>
+    <p>No results for your search. Please try another search, gov'nor.</p>
   )
 
   return (

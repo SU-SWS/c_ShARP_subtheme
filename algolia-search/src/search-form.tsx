@@ -10,17 +10,19 @@ const SearchForm = (props) => {
   const ref = useRef(false)
   const windowSearchParams = new URLSearchParams(window.location.search)
   const {query, refine} = useSearchBox(props);
+  console.log(windowSearchParams.get('news-types')?.split(','));
+
   const {items: newsTypeRefinements, refine: refineNewsType} = useRefinementList({attribute: "news_type"});
   const [chosenNewsTypes, setChosenNewsTypes] = useState<string[]>(windowSearchParams.get('news-types')?.split(',') || []);
   const {status} = useInstantSearch();
   const inputRef = useRef<HTMLInputElement>(null);
-
+console.log(windowSearchParams);
+// console.log(chosenNewsTypes);
   useEffect(() => {
     if (ref.current) return
     ref.current = true;
     chosenNewsTypes.map(newsType => refineNewsType(newsType));
   }, [ref, chosenNewsTypes])
-  console.log('works');
 
   return (
     <form
