@@ -9,7 +9,7 @@ import Caret from "./components/caret";
 import Hamburger from "./components/hamburger";
 import Close from "./components/close";
 import MagnifyingGlass from "./components/magnifying-glass";
-import useOutsideClick from "./hooks/useOutsideClick";
+import useMenuDropDown from "./hooks/useMenuDropDown";
 import {useEventListener} from "usehooks-ts";
 
 const islandName = 'main-menu-island'
@@ -137,7 +137,7 @@ export const MainMenu = ({}) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
-  useOutsideClick(navRef, () => setMenuOpen(false));
+  useMenuDropDown(navRef, () => setMenuOpen(false));
 
   useEffect(() => {
     if (menuItems.length) return;
@@ -360,7 +360,7 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
   const buttonRef = useRef<HTMLButtonElement | null>(null)
   const [submenuOpen, setSubmenuOpen] = useState(false)
   const menuItemRef = useRef<HTMLLIElement | null>(null);
-  useOutsideClick(menuItemRef, () => setSubmenuOpen(false));
+  useMenuDropDown(menuItemRef, () => setSubmenuOpen(false));
 
   const handleEscape = (event: KeyboardEvent) => {
     if (event.key === "Escape" && submenuOpen) {

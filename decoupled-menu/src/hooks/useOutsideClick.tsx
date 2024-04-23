@@ -1,7 +1,8 @@
 import { useOnClickOutside} from "usehooks-ts";
 import {RefObject} from "preact";
 
-const useOutsideClick = (ref: RefObject<any>, onClickOutside: () => void) => {
+const useMenuDropDown = (ref: RefObject<any>, onClickOutside: () => void) => {
+  console.log('works')
   useOnClickOutside(ref, onClickOutside, "mousedown")
   useOnClickOutside(ref, onClickOutside, "touchstart")
 
@@ -10,4 +11,4 @@ const useOutsideClick = (ref: RefObject<any>, onClickOutside: () => void) => {
   useOnClickOutside(ref, onClickOutside, "focusin")
 }
 
-export default useOutsideClick;
+export default useMenuDropDown;
