@@ -215,7 +215,6 @@ const Button = styled.button`
   box-shadow: none;
   flex-shrink: 0;
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border 0.2s ease-in-out;
-  width: 38px;
   height: 38px;
   position: absolute;
   right: 4.2rem;
@@ -406,9 +405,6 @@ const MenuItem = ({id, title, url, items, expanded, level = 0}: {
 
         {(items && expanded) &&
           <>
-            {/* {level === 0 &&
-              <MenuItemDivider/>
-            } */}
             <Button
               ref={buttonRef}
               onClick={() => setSubmenuOpen(!submenuOpen)}
