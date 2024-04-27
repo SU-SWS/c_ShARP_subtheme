@@ -9,14 +9,13 @@ import {useEffect, useRef, useState} from "preact/compat";
 const SearchForm = (props) => {
   const ref = useRef(false)
   const windowSearchParams = new URLSearchParams(window.location.search)
+  console.log("search Params: " + windowSearchParams)
   const {query, refine} = useSearchBox(props);
-  console.log(windowSearchParams.get('news-types')?.split(','));
-
-  const {items: newsTypeRefinements, refine: refineNewsType} = useRefinementList({attribute: "news_type"});
+  const {items: pageTypeRefinements, refine: refineNewsType} = useRefinementList({attribute: "basic_page_type"});
   const [chosenNewsTypes, setChosenNewsTypes] = useState<string[]>(windowSearchParams.get('news-types')?.split(',') || []);
   const {status} = useInstantSearch();
   const inputRef = useRef<HTMLInputElement>(null);
-console.log(windowSearchParams);
+console.log(chosenNewsTypes);
 // console.log(chosenNewsTypes);
   useEffect(() => {
     if (ref.current) return
@@ -34,8 +33,8 @@ console.log(windowSearchParams);
         e.stopPropagation();
         refine(inputRef.current?.value);
 
-        const addRefinements = chosenNewsTypes.filter(newsType => !newsTypeRefinements.find(item => item.value === newsType).isRefined)
-        const removeRefinements = newsTypeRefinements.filter(refinement => refinement.isRefined && !chosenNewsTypes.includes(refinement.value)).map(refinement => refinement.value);
+        const addRefinements = chosenNewsTypes.filter(newsType => !pageTypeRefinements.find(item => item.value === newsType).isRefined)
+        const removeRefinements = pageTypeRefinements.filter(refinement => refinement.isRefined && !chosenNewsTypes.includes(refinement.value)).map(refinement => refinement.value);
 
         [...addRefinements, ...removeRefinements].map(newsType => refineNewsType(newsType))
 
@@ -52,7 +51,7 @@ console.log(windowSearchParams);
         inputRef.current.value = '';
         inputRef.current?.focus();
 
-        newsTypeRefinements.filter(refinement => refinement.isRefined).map(refinement => refineNewsType(refinement.value));
+        pageTypeRefinements.filter(refinement => refinement.isRefined).map(refinement => refineNewsType(refinement.value));
         setChosenNewsTypes([]);
         const searchParams = new URLSearchParams(window.location.search)
         searchParams.delete('key')
@@ -80,12 +79,14 @@ console.log(windowSearchParams);
       </div>
 
       <fieldset>
-        <legend>News Type</legend>
+        <legend>Basic Page Types</legend>
 
         <ul style={{listStyle: "none"}}>
-          {newsTypeRefinements.sort((a, b) => a.count < b.count ? 1 : (a.count === b.count ? (a.value < b.value ? -1 : 1) : -1)).map((item, i) =>
+          {pageTypeRefinements.sort((a, b) => a.count < b.count ? 1 : (a.count === b.count ? (a.value < b.value ? -1 : 1) : -1)).map((item, i) =>
             <li key={i}>
-              <label>
+              <label style={{
+                'margin-top': '1rem'
+              }}>
                 <input
                   type="checkbox"
                   checked={chosenNewsTypes.findIndex(value => value === item.value) >= 0}
@@ -99,6 +100,16 @@ console.log(windowSearchParams);
                       }
                       return newTypes;
                     });
+                  }}
+                  style={{
+                    border: 'black',
+                    width: '12px',
+                    height: '12px',
+                    float: 'left',
+                    clip: 'unset',
+                    overflow: 'unset',
+                    position: 'relative',
+                    'clip-path': 'unset',
                   }}
                 />
                 {item.value} ({item.count})

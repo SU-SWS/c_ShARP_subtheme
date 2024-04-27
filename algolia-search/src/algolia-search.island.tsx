@@ -9,10 +9,8 @@ import styled from "styled-components";
 import {StanfordHit} from "./hits/hit.types";
 
 const islandName = 'algolia-search'
-
 const appId = window.drupalSettings?.stanfordAlgolia.appId || process.env.ALGOLIA_APP_ID
 const key = window.drupalSettings?.stanfordAlgolia.searchKey || process.env.ALGOLIA_KEY
-
 const searchClient = algoliasearch(appId, key);
 
 const Hit = ({hit}: HitsProps<StanfordHit>) => {
@@ -24,8 +22,7 @@ const Hit = ({hit}: HitsProps<StanfordHit>) => {
 
 const Container = styled.div`
   li {
-    margin-bottom: 30px;
-    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 
     &:last-child {
       border-bottom: none;
