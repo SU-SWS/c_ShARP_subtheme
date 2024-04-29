@@ -21,6 +21,8 @@ const Hit = ({hit}: HitsProps<StanfordHit>) => {
 }
 
 const Container = styled.div`
+  display: flex-container;
+
   li {
     margin-bottom: 10px;
 
@@ -33,11 +35,15 @@ const Container = styled.div`
 const CustomHits = (props) => {
   const {hits} = useHits(props);
   if (hits.length === 0) return (
-    <p>No results for your search. Please try another search, gov'nor.</p>
+    <p>No results for your search. Please try another search.</p>
   )
 
+  // Returns results
   return (
-    <ul style={{listStyle: "none", padding: 0}}>
+    <ul
+      style={{listStyle: "none", padding: 0}}
+      className="flex-lg-9-of-12 main-region"
+    >
       {hits.map(hit =>
         <li key={hit.objectID}>
           <Hit hit={hit}/>
@@ -54,18 +60,21 @@ const Search = () => {
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
 
   return (
-    <InstantSearch
-      searchClient={searchClient}
-      indexName={searchIndex}
-      initialUiState={{
-        [searchIndex]: {query: initialSearch},
-      }}
-    >
-      <Container>
-        <SearchForm/>
-        <CustomHits/>
-      </Container>
-    </InstantSearch>
+    <div className="works">
+      <InstantSearch
+        searchClient={searchClient}
+        indexName={searchIndex}
+        initialUiState={{
+          [searchIndex]: {query: initialSearch},
+        }}
+      >
+        <Container className="flex-container">
+          <SearchForm/>
+          <CustomHits/>
+        </Container>
+      </InstantSearch>
+    </div>
+
   )
 }
 
