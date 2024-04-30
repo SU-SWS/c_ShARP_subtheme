@@ -21,7 +21,6 @@ const Hit = ({hit}: HitsProps<StanfordHit>) => {
 }
 
 const Container = styled.div`
-  display: flex-container;
 
   li {
     margin-bottom: 10px;
@@ -41,8 +40,8 @@ const CustomHits = (props) => {
   // Returns results
   return (
     <ul
-      style={{listStyle: "none", padding: 0}}
-      className="flex-lg-9-of-12 main-region"
+      style={{listStyle: "none", padding: 0, float: "right", width: "66%"}}
+      className=""
     >
       {hits.map(hit =>
         <li key={hit.objectID}>
@@ -68,7 +67,7 @@ const Search = () => {
           [searchIndex]: {query: initialSearch},
         }}
       >
-        <Container className="flex-container">
+        <Container>
           <SearchForm/>
           <CustomHits/>
         </Container>
