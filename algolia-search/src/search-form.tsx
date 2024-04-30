@@ -107,10 +107,10 @@ const SearchForm = (props) => {
       </div>
 
       <div style={{float: "left", width: "33%"}}>
-        <fieldset>
+        <fieldset style={{padding: "0"}}>
           <legend>Basic Page Types</legend>
 
-          <ul style={{listStyle: "none"}}>
+          <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {pageTypeRefinements.sort((a, b) => a.count < b.count ? 1 : (a.count === b.count ? (a.value < b.value ? -1 : 1) : -1)).map((item, i) =>
               <li key={i}>
                 <label style={{
@@ -129,6 +129,7 @@ const SearchForm = (props) => {
                       overflow: 'unset',
                       position: 'relative',
                       'clip-path': 'unset',
+                      "marginRight": "3"
                     }}
                   />
                   {item.value} ({item.count})
