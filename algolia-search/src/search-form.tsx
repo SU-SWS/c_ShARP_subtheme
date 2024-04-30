@@ -11,14 +11,14 @@ const SearchForm = (props) => {
   const windowSearchParams = new URLSearchParams(window.location.search)
   const {query, refine} = useSearchBox(props);
   const {items: pageTypeRefinements, refine: refineNewsType} = useRefinementList({attribute: "basic_page_type"});
-  const [chosenNewsTypes, setChosenNewsTypes] = useState<string[]>(windowSearchParams.get('news-types')?.split(',') || []);
+  const [chosenBasicPageTypes, setChosenNewsTypes] = useState<string[]>(windowSearchParams.get('basic-page-type')?.split(',') || []);
   const {status} = useInstantSearch();
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (ref.current) return
     ref.current = true;
-    chosenNewsTypes.map(newsType => refineNewsType(newsType));
-  }, [ref, chosenNewsTypes])
+    chosenBasicPageTypes.map(basicPageType => refineNewsType(basicPageType));
+  }, [ref, chosenBasicPageTypes])
 
   return (
     <form
@@ -31,14 +31,14 @@ const SearchForm = (props) => {
         e.stopPropagation();
         refine(inputRef.current?.value);
 
-        const addRefinements = chosenNewsTypes.filter(newsType => !pageTypeRefinements.find(item => item.value === newsType).isRefined)
-        const removeRefinements = pageTypeRefinements.filter(refinement => refinement.isRefined && !chosenNewsTypes.includes(refinement.value)).map(refinement => refinement.value);
+        const addRefinements = chosenBasicPageTypes.filter(basicPageType => !pageTypeRefinements.find(item => item.value === basicPageType).isRefined)
+        const removeRefinements = pageTypeRefinements.filter(refinement => refinement.isRefined && !chosenBasicPageTypes.includes(refinement.value)).map(refinement => refinement.value);
 
-        [...addRefinements, ...removeRefinements].map(newsType => refineNewsType(newsType))
+        [...addRefinements, ...removeRefinements].map(basicPageType => refineNewsType(basicPageType))
 
         const searchParams = new URLSearchParams(window.location.search)
         inputRef.current?.value.length > 0 ? searchParams.set('key', inputRef.current?.value): searchParams.delete('key');
-        chosenNewsTypes.length > 0 ? searchParams.set('news-types', chosenNewsTypes.join(',')) : searchParams.delete('news-types')
+        chosenBasicPageTypes.length > 0 ? searchParams.set('basic-page-type', chosenBasicPageTypes.join(',')) : searchParams.delete('basic-page-type')
 
         window.history.replaceState(null, '', `?${searchParams.toString()}`)
       }}
@@ -53,7 +53,7 @@ const SearchForm = (props) => {
         setChosenNewsTypes([]);
         const searchParams = new URLSearchParams(window.location.search)
         searchParams.delete('key')
-        searchParams.delete('news-types');
+        searchParams.delete('basic-page-type');
         window.history.replaceState(null, '', `?${searchParams.toString()}`)
       }}
       style={{marginBottom: "20px"}}
@@ -95,17 +95,36 @@ const SearchForm = (props) => {
               }}>
                 <input
                   type="checkbox"
-                  checked={chosenNewsTypes.findIndex(value => value === item.value) >= 0}
+                  checked={chosenBasicPageTypes.findIndex(value => value === item.value) >= 0}
                   onChange={(e) => {
                     setChosenNewsTypes(prevTypes => {
-                      const newTypes = [...prevTypes];
+                      const pageTypes = [...prevTypes];
                       if (e.currentTarget.checked) {
-                        newTypes.push(item.value);
+                        pageTypes.push(item.value);
                       } else {
-                        newTypes.splice(prevTypes.findIndex(value => value === item.value), 1)
+                        pageTypes.splice(prevTypes.findIndex(value => value === item.value), 1)
                       }
-                      return newTypes;
+                      return pageTypes;
                     });
+                    ((e) => {
+                      console.log(i);
+                      console.log(item.value);
+                      e.preventDefault();
+                      e.stopPropagation();
+                      refine(inputRef.current?.value);
+
+                      const addRefinements = chosenBasicPageTypes.filter(basicPageType => !pageTypeRefinements.find(item => item.value === basicPageType).isRefined)
+                      const removeRefinements = pageTypeRefinements.filter(refinement => refinement.isRefined && !chosenBasicPageTypes.includes(refinement.value)).map(refinement => refinement.value);
+
+                      [...addRefinements, ...removeRefinements].map(basicPageType => refineNewsType(basicPageType))
+
+                      const searchParams = new URLSearchParams(window.location.search)
+                      inputRef.current?.value.length > 0 ? searchParams.set('key', inputRef.current?.value): searchParams.delete('key');
+                      chosenBasicPageTypes.length > 0 ? searchParams.set('basic-page-type', chosenBasicPageTypes.join(',')) : searchParams.delete('basic-page-type')
+
+                      window.history.replaceState(null, '', `?${searchParams.toString()}`)
+
+                    })(e)
                   }}
                   style={{
                     border: 'black',
@@ -131,7 +150,7 @@ const SearchForm = (props) => {
         </ul>
       </fieldset>
 
-      <StatusMessage status={status} query={query}/>
+      Status: <StatusMessage status={status} query={query}/>
     </form>
   );
 }
