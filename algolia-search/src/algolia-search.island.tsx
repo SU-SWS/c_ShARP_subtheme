@@ -29,6 +29,21 @@ const Container = styled.div`
       border-bottom: none;
     }
   }
+
+  [type=checkbox],[type=radio] {
+    -webkit-clip-path: unset;
+    padding: 0;
+    width:  12px;
+    height:12px;
+    clip: unset;
+    overflow: unset;
+    position: relative;
+    clipPath: unset;
+    margin-right: 8px;
+  }
+  fieldset {
+    padding: 0;
+  }
 `
 
 const CustomHits = (props) => {
@@ -64,11 +79,14 @@ const Search = () => {
   if (currentSearchParams.get("page-type")) {
     initialUiState.refinementList = {basic_page_type: currentSearchParams.get("page-type").split(',')}
   }
+  if (currentSearchParams.get("shared")) {
+    initialUiState.refinementList = {basic_page_type: currentSearchParams.get("shared").split(',')}
+  }
 
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
 
   return (
-    <div className="works">
+    <div>
       <InstantSearch
         searchClient={searchClient}
         indexName={searchIndex}
