@@ -80,7 +80,7 @@ const Search = () => {
     initialUiState.refinementList = {basic_page_type: currentSearchParams.get("page-type").split(',')}
   }
   if (currentSearchParams.get("shared")) {
-    initialUiState.refinementList = {basic_page_type: currentSearchParams.get("shared").split(',')}
+    initialUiState.refinementList = {shared_tags: currentSearchParams.get("shared").split(',')}
   }
 
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;

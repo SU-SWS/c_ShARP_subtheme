@@ -24,7 +24,7 @@ const SearchForm = (props) => {
     const sharedTypes = sharedRefinements.filter(item => item.isRefined).map(item => item.value);
 
     if (pageTypes.length >= 1) searchParams.set("page-type", pageTypes.join(','))
-    if (sharedTypes.length >= 1) searchParams.set("shared-type", sharedTypes.join(','))
+    if (sharedTypes.length >= 1) searchParams.set("shared", sharedTypes.join(','))
 
     window.history.replaceState(null, '', `?${searchParams.toString()}`);
   }, [query, pageTypeRefinements, sharedRefinements])
@@ -91,9 +91,8 @@ const SearchForm = (props) => {
                     type="checkbox"
                     onChange={() => refinePageTypes(item.value)}
                     checked={item.isRefined}
-
                   />
-                  {item.value} ({item.count})d
+                  {item.value} ({item.count})
                 </label>
               </li>
             )}
@@ -105,8 +104,7 @@ const SearchForm = (props) => {
           <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {sharedRefinements.map((item, i) =>
               <li
-                key={i}
-                className="w-fit flex items-center justify-center border border-black p-5 mb-5 last:mb-0"
+                key={`shared-i`}
                 style={{alignItems: "center"}}
               >
                 <label style={{
@@ -146,6 +144,7 @@ const CustomCurrentRefinements = (props) => {
       {items.map(refinement => {
         return refinement.refinements.map((item, i) =>
           <li key={`refinement-${i}`}>
+            <h1>Works</h1>
             {item.value}
             <button disabled={!canRefine} onClick={() => refine(item)}>Clear</button>
           </li>
