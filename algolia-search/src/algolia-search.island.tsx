@@ -55,7 +55,16 @@ const CustomHits = (props) => {
 
 const Search = () => {
   const currentSearchParams = new URLSearchParams(window.location.search)
-  const initialSearch = currentSearchParams.get('key');
+
+  const initialUiState = {};
+
+  if (currentSearchParams.get('key')) {
+    initialUiState.query = currentSearchParams.get('key');
+  }
+  if (currentSearchParams.get("page-type")) {
+    initialUiState.refinementList = {basic_page_type: currentSearchParams.get("page-type").split(',')}
+  }
+
   const searchIndex = window.drupalSettings?.stanfordAlgolia.index || process.env.ALGOLIA_INDEX;
 
   return (
@@ -64,7 +73,7 @@ const Search = () => {
         searchClient={searchClient}
         indexName={searchIndex}
         initialUiState={{
-          [searchIndex]: {query: initialSearch},
+          [searchIndex]: initialUiState,
         }}
       >
         <Container>
