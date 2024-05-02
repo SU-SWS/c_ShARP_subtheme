@@ -144,7 +144,6 @@ const CustomCurrentRefinements = (props) => {
       {items.map(refinement => {
         return refinement.refinements.map((item, i) =>
           <li key={`refinement-${i}`}>
-            <h1>Works</h1>
             {item.value}
             <button disabled={!canRefine} onClick={() => refine(item)}>Clear</button>
           </li>
