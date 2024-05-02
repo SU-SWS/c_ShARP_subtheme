@@ -43,7 +43,7 @@ const SearchForm = (props) => {
           if (refinementItem.isRefined) refinePageTypes(refinementItem.value)
         })
         sharedRefinements.map(refinementItem => {
-          if (refinementItem.isRefined) refinePageTypes(refinementItem.value)
+          if (refinementItem.isRefined) refineSharedTypes(refinementItem.value)
         })
       }}
     >
@@ -93,7 +93,7 @@ const SearchForm = (props) => {
                     checked={item.isRefined}
 
                   />
-                  {item.value} ({item.count})
+                  {item.value} ({item.count})d
                 </label>
               </li>
             )}
@@ -107,9 +107,7 @@ const SearchForm = (props) => {
               <li
                 key={i}
                 className="w-fit flex items-center justify-center border border-black p-5 mb-5 last:mb-0"
-                style={{
-                  alignItems: "center",
-                }}
+                style={{alignItems: "center"}}
               >
                 <label style={{
                   marginTop: "1rem",
@@ -120,7 +118,6 @@ const SearchForm = (props) => {
                     type="checkbox"
                     onChange={() => refineSharedTypes(item.value)}
                     checked={item.isRefined}
-
                   />
                   {item.value} ({item.count})
                 </label>
