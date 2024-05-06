@@ -71,7 +71,7 @@ const SearchForm = (props) => {
 
       <div style={{float: "left", width: "33%", "margin-top": "39px"}}>
         <fieldset>
-          <legend>Basic Page Types</legend>
+          <legend>Access & Affiliation</legend>
 
           <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {pageTypeRefinements.map((item, i) =>
@@ -99,7 +99,7 @@ const SearchForm = (props) => {
           </ul>
         </fieldset>
         <fieldset>
-          <legend>Shared Types</legend>
+          <legend>Discipline</legend>
 
           <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {sharedRefinements.map((item, i) =>
