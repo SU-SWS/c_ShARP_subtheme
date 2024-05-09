@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import {
   useCurrentRefinements,
   useInstantSearch,
@@ -5,6 +6,23 @@ import {
   useSearchBox
 } from "react-instantsearch";
 import {useEffect, useRef} from "preact/compat";
+
+const FilterContainer = styled.div`
+  margin-top: 39px;
+
+  @media (min-width: 576px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    display: block;
+    float: left;
+    width: 33%;
+    padding-right: 2rem;
+  }
+`
 
 const SearchForm = (props) => {
 
@@ -73,11 +91,11 @@ const SearchForm = (props) => {
 
         <div style={{display: "flex", gap: "1rem", marginTop: "1rem"}}>
           <button type="submit">Submit</button>
-
+          <button type="reset">Clear all</button>
         </div>
       </div>
 
-      <div style={{float: "left", width: "33%", "margin-top": "39px"}}>
+      <FilterContainer>
         <fieldset>
           <legend>Access & Affiliation</legend>
 
@@ -85,22 +103,29 @@ const SearchForm = (props) => {
             {pageTypeRefinements.map((item, i) =>
               <li
                 key={i}
-                className="w-fit flex items-center justify-center border border-black p-5 mb-5 last:mb-0"
-                style={{
-                  alignItems: "center",
-                }}
+                style={{marginBottom: "0"}}
               >
                 <label style={{
-                  marginTop: "1rem",
+                  marginTop: "0",
+                  paddingTop: ".6rem",
+                  paddingBottom: ".6rem",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "20px",
                 }}>
                   <input
                     type="checkbox"
                     onChange={() => refinePageTypes(item.value)}
                     checked={item.isRefined}
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      flexShrink: "0",
+                    }}
                   />
-                  {item.value} ({item.count})
+                  <div style={{marginTop: "1px"}}>
+                    {item.value} ({item.count})
+                  </div>
                 </label>
               </li>
             )}
@@ -113,28 +138,35 @@ const SearchForm = (props) => {
             {sharedRefinements.map((item, i) =>
               <li
                 key={`shared-i`}
-                style={{alignItems: "center"}}
+                style={{marginBottom: "0"}}
               >
                 <label style={{
-                  marginTop: "1rem",
+                  marginTop: "0",
+                  paddingTop: ".6rem",
+                  paddingBottom: ".6rem",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "20px",
                 }}>
                   <input
                     type="checkbox"
                     onChange={() => refineSharedTypes(item.value)}
                     checked={item.isRefined}
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      flexShrink: "0",
+                    }}
                   />
-                  {item.value} ({item.count})
+                  <div style={{marginTop: "1px"}}>
+                    {item.value} ({item.count})
+                  </div>
                 </label>
               </li>
             )}
           </ul>
         </fieldset>
-        <button type="reset">
-          Reset
-        </button>
-      </div>
+      </FilterContainer>
     </form>
   );
 }
