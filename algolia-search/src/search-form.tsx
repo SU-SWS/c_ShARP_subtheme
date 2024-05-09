@@ -9,8 +9,16 @@ import {useEffect, useRef} from "preact/compat";
 const SearchForm = (props) => {
 
   const {query, refine} = useSearchBox(props);
-  const {items: pageTypeRefinements, refine: refinePageTypes} = useRefinementList({attribute: "basic_page_type"});
-  const {items: sharedRefinements, refine: refineSharedTypes} = useRefinementList({attribute: "shared_tags"});
+  const {items: pageTypeRefinements, refine: refinePageTypes} = useRefinementList({
+    attribute: "basic_page_type",
+    limit: 1000,
+    sortBy: ["name:asc"]
+  });
+  const {items: sharedRefinements, refine: refineSharedTypes} = useRefinementList({
+    attribute: "shared_tags",
+    limit: 1000,
+    sortBy: ["name:asc"]
+  });
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

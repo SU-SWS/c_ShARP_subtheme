@@ -93,6 +93,7 @@ const Search = () => {
         initialUiState={{
           [searchIndex]: initialUiState,
         }}
+        future={{preserveSharedStateOnUnmount: true}}
       >
         <Container>
           <SearchForm/>
