@@ -97,7 +97,7 @@ const SearchForm = (props) => {
 
       <FilterContainer>
         <fieldset>
-          <legend>Access & Affiliation</legend>
+          <legend style={{fontSize: "2.4rem"}}>Filter by Access & Affiliation</legend>
 
           <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {pageTypeRefinements.map((item, i) =>
@@ -111,7 +111,7 @@ const SearchForm = (props) => {
                   paddingBottom: ".6rem",
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "20px",
+                  fontSize: "2rem",
                 }}>
                   <input
                     type="checkbox"
@@ -132,7 +132,7 @@ const SearchForm = (props) => {
           </ul>
         </fieldset>
         <fieldset>
-          <legend>Discipline</legend>
+          <legend style={{fontSize: "2.4rem"}}>Filter by Discipline</legend>
 
           <ul style={{listStyle: "none", paddingLeft: "0", marginInline: "0"}}>
             {sharedRefinements.map((item, i) =>
@@ -146,7 +146,7 @@ const SearchForm = (props) => {
                   paddingBottom: ".6rem",
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "20px",
+                  fontSize: "2rem",
                 }}>
                   <input
                     type="checkbox"
