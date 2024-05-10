@@ -48,3 +48,12 @@ function c_sharp_subtheme_preprocess_banner(&$variables) {
   // Add banner variant style class to card wrapper.
   $variables['attributes']['class'][] = $paragraph->getBehaviorSetting('react_paragraphs:banner_variant_info', 'banner_style');
 }
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function c_sharp_subtheme_preprocess_page_title(&$variables) {
+  if (\Drupal::request()->getPathInfo() == '/search') {
+    $variables['title']['#markup'] = 'Search Shared Facilities';
+  }
+}

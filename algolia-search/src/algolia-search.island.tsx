@@ -20,8 +20,18 @@ const Hit = ({hit}: HitsProps<StanfordHit>) => {
   return <DefaultHit hit={hit}/>
 }
 
-const Container = styled.div`
+const ResultsContainer = styled.ul`
+  list-style: none;
+  padding-left: 0;
 
+  @media (min-width: 768px) {
+    float: right;
+    width: 66%;
+    padding-left: 2rem;
+  }
+`
+
+const Container = styled.div`
   li {
     margin-bottom: 10px;
 
@@ -54,16 +64,13 @@ const CustomHits = (props) => {
 
   // Returns results
   return (
-    <ul
-      style={{listStyle: "none", padding: 0, float: "right", width: "66%"}}
-      className=""
-    >
+    <ResultsContainer>
       {hits.map(hit =>
         <li key={hit.objectID}>
           <Hit hit={hit}/>
         </li>
       )}
-    </ul>
+    </ResultsContainer>
   )
 }
 
