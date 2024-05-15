@@ -2,7 +2,7 @@ name: c-ShARP Subtheme
 type: theme
 description: 'c-ShARP Subtheme.'
 package: Stanford
-version: 1.1.0
+version: 1.0.1
 core_version_requirement: ^9 || ^10
 base theme: stanford_basic
 libraries:
