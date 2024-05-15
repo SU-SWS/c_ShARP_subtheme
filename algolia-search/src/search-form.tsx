@@ -30,7 +30,6 @@ const SearchForm = (props) => {
   const {items: pageTypeRefinements, refine: refinePageTypes} = useRefinementList({
     attribute: "basic_page_type",
     limit: 1000,
-    sortBy: ["name:asc"]
   });
   const {items: sharedRefinements, refine: refineSharedTypes} = useRefinementList({
     attribute: "shared_tags",
