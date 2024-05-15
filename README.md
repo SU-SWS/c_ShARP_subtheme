@@ -1,5 +1,5 @@
 # [c-ShARP Subtheme](https://github.com/SU-SWS/c_ShARP_subtheme)
-##### Version: 1.0.0
+##### Version: 1.0.1
 
 Changelog: [Changelog.txt](CHANGELOG.txt)
 
@@ -15,6 +15,7 @@ The c-ShARP Subtheme is a Stanford sub-theme that works with the Stanford Basic 
 - Roboto font addition
 - Transparent overlay banner variant
 - Updated local footer
+- Algolia search for shared facilities with filter by basic_page_type (Access & Affiliation) and shared_tags (Discipline) facets
 
 Documentation
 ---

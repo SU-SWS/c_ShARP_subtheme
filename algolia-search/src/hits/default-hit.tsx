@@ -9,7 +9,7 @@ const HitContainer = styled.article`
   padding: 2rem 2rem 2rem 0;
   margin-bottom: 2rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     flex-direction: row;
   }
 
