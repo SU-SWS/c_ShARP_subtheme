@@ -1,7 +1,7 @@
 # [c-ShARP Subtheme](https://github.com/SU-SWS/c_ShARP_subtheme)
-##### Version: 1.0.1
+##### Version: 1.0.2
 
-Changelog: [Changelog.txt](CHANGELOG.txt)
+Changelog: [Changelog.md](CHANGELOG.md)
 
 Description
 ---
@@ -19,8 +19,8 @@ The c-ShARP Subtheme is a Stanford sub-theme that works with the Stanford Basic 
 
 Documentation
 ---
-See subtheming guides and best practices here: 
-https://devguide.sites.stanford.edu/front-end/drupal/sub-themes 
+See subtheming guides and best practices here:
+https://devguide.sites.stanford.edu/front-end/drupal/sub-themes
 
 Configuration
 ---
