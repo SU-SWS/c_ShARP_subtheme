@@ -1,12 +1,13 @@
 import algoliasearch from 'algoliasearch/lite';
 import {createIslandWebComponent} from 'preact-island'
-import {HitsProps, InstantSearch, useHits} from 'react-instantsearch';
+import {HitsProps, InstantSearch, useHits, HitsPerPage, Configure} from 'react-instantsearch';
 import SearchForm from "./search-form";
 import EventHit from "./hits/events";
 import NewsHit from "./hits/news";
 import DefaultHit from "./hits/default-hit";
 import styled from "styled-components";
 import {StanfordHit} from "./hits/hit.types";
+import {lazy} from "preact/compat";
 
 const islandName = 'algolia-search'
 const appId = window.drupalSettings?.stanfordAlgolia.appId || process.env.ALGOLIA_APP_ID
@@ -101,8 +102,12 @@ const Search = () => {
           [searchIndex]: initialUiState,
         }}
         future={{preserveSharedStateOnUnmount: true}}
+
       >
         <Container>
+          <Configure
+            hitsPerPage={1000}
+          />
           <SearchForm/>
           <CustomHits/>
         </Container>
